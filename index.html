@@ -10,25 +10,37 @@
 </head>
 
 <body>
-    <div class="game">
-        <div class="tower-area" id="tower-area1">
+
+
+    <div class="game" id="game">
+        <div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
             <div class="tower">
-                <div class="disk1" id="disk1"></div>
-                <div class="disk2" id="disk2"></div>
-                <div class="disk3" id="disk3"></div>
+                <div style="margin-top:130px">  
+                    <div class="disk1" onclick="disk1(event)"></div>
+                </div>
+                <div  style="margin-top:-40px">
+                    <div class="disk2"  onclick="disk2(event)"></div>
+                </div>
+                <div style="margin-top:-40px">
+                     <div class="disk3" onclick="disk3(event)"></div>
+                </div>
+               
             </div>
         </div>
-        <div class="tower-area" id="tower-area2">
-            <div class="tower" >
-
-
-
+        <div class="tower-area" id="tower-area2" onclick="towerAreaTwo()">
+            <div class="tower">
+               
             </div>
         </div>
-        <div class="tower-area" id="tower-area3">
-            <div class="tower" ></div>
+        <div class="tower-area" id="tower-area3" onclick="towerAreaThree()">
+            <div class="tower">
+                
+            </div>
         </div>
     </div>
+
+
+
     <script src="index.js"></script>
 </body>
 
