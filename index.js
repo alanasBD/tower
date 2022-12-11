@@ -1,34 +1,51 @@
 let tower = 
 [
-  ["disk1","disk2","disk3"],
+  [10,11,12],
   [],
   []
 ];
 
 
 
+// disk1 = 10;
+// disk2 = 11;
+// disk3 = 12;
 
-let disk = ""
+
+let disk = 12;
 
 // all disks
 
 function disk1(event){
+  const diskOne = 10;
+
+  if(diskOne >= disk){
+    disk = diskOne;
+  }
   
-  disk = "disk1";
-  console.log(event,tower);
+  console.log(disk);
   event.stopPropagation();
 
 }
 
 function disk2(event){
-  disk = "disk2";
-  console.log(event.target,tower);
+  const diskTwo = 11
+
+  if(diskTwo >= disk){
+    disk = diskTwo;
+  }
+  console.log(disk);
   event.stopPropagation();
 }
 
 function disk3(event){
-  disk = "disk3";
-  console.log(event.target,tower);
+  const  diskThree = 12;
+
+  if(diskThree>= disk){
+     disk = diskThree
+  }
+  console.log(disk);
+
   event.stopPropagation();
 }
 
@@ -100,7 +117,7 @@ const towerAreaOne = () =>{
    const item = tower[area][index];
    tower[area].pop(item);
    tower[0].push(item);
-  //  console.log(tower);
+   console.log(tower);
    towerArea()
 }
 
@@ -109,7 +126,7 @@ const towerAreaTwo = () =>{
    const item = tower[area][index];
    tower[area].pop(item);
    tower[1].push(item);
-  //  console.log(tower);
+    console.log(tower);
    towerArea()
 }
 
@@ -120,7 +137,7 @@ const towerAreaThree = () =>{
   const item = tower[area][index];
   tower[area].pop(item);
   tower[2].push(item);
-  // console.log(tower);
+  console.log(tower);
   towerArea()
 }
 
