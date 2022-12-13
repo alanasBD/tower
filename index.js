@@ -6,6 +6,9 @@ let tower =
 ];
 
 
+let orginalDisks = ["disk1","disk2","disk3"];
+
+let move = 0;
 
 // disk1 = 10;
 // disk2 = 11;
@@ -34,6 +37,30 @@ const replaceNumber = () =>{
 
     }
   }
+}
+
+//match disks
+
+const playAgain = () =>{
+   location.reload();
+}
+
+const matchDisks = () =>{
+   let matched = JSON.stringify(orginalDisks)===JSON.stringify(tower2[2]);
+   if(matched){
+
+     const lastScore = Number(localStorage.getItem("last-score"));
+     if(move < lastScore){
+       localStorage.setItem("last-score",move);
+       document.getElementById("last-score").innerText = move;
+     }
+
+     document.getElementById("game").innerHTML = 
+     `<div id="result">
+         <h1>Congratulation!Your Score is : ${move}</h1>
+         <button onclick="playAgain()">play again</button>
+      </div>`
+   }
 }
 
 
@@ -123,6 +150,11 @@ const  towerArea = () =>{
 
 // areas of tower
 
+
+const showMove = () =>{
+  document.getElementById("move").innerText = move;
+}
+
 const towerAreaOne = () =>{
    const [area,index] = searchLocation(disk);
   
@@ -136,10 +168,14 @@ const towerAreaOne = () =>{
    if(isLastElement && !lenOfAreaOne){
     tower[area].pop();
     tower[0].push(disk);
+    move++;
+    showMove();
   }
   else if(isLastElement && ( disk > tower[0][lenOfAreaOne-1])){
     tower[area].pop();
     tower[0].push(disk);
+    move++;
+    showMove();
   }
 
   
@@ -162,10 +198,14 @@ const towerAreaTwo = () =>{
    if(isLastElement && !lenOfAreaTwo){
      tower[area].pop();
      tower[1].push(disk);
-   }
+     move++;
+     showMove();
+    }
    else if(isLastElement && ( disk > tower[1][lenOfAreaTwo-1])){
      tower[area].pop();
      tower[1].push(disk);
+     move++;
+     showMove();
    }
    
    
@@ -191,18 +231,28 @@ const towerAreaThree = () =>{
   if(isLastElement && !lenOfAreaThree){
     tower[area].pop();
     tower[2].push(disk);
+    move++;
+    showMove();
+  
+    
   }
   else if(isLastElement && ( disk > tower[2][lenOfAreaThree-1])){
     tower[area].pop();
     tower[2].push(disk);
+    move++;
+    showMove();
+
+   
+   
   }
 
-
-  
-
- 
   replaceNumber();
   towerArea()
+  matchDisks();
+ 
 }
 
+
+
+document.getElementById("last-score").innerText = localStorage.getItem("last-score");
 

@@ -46,3 +46,7 @@
     /* margin-top: -40px; */
     cursor: pointer;
 }
+
+#result{
+    text-align: center;
+}
