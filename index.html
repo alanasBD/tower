@@ -5,13 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game | Tower Of Hanoi</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <h1 style="text-align: center;">Game (Tower of Hanoi)</h1>
+    <!-- buttons -->
+    <div class="btns">
+        <button onclick="selectButton(4)" id="btn4">Disk 4</button>
+        <button onclick="selectButton(5)" id="btn5">Disk 5</button>
+        <button onclick="selectButton(6)" id="btn6">Disk 6</button>
+    </div>
+
     <div class="game" id="game">
         <div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
             <div class="tower">
@@ -24,7 +31,15 @@
                 <div style="margin-top:-40px">
                      <div class="disk3" onclick="diskInfo(event)"></div>
                 </div>
-               
+                <!-- <div style="margin-top:-40px">
+                    <div class="disk4"  id="disk4"  onclick="diskInfo(event)"></div>
+                </div>
+                <div style="margin-top:-40px">
+                    <div class="disk5"  id="disk5" onclick="diskInfo(event)"></div>
+                </div>
+                <div style="margin-top:-40px">
+                    <div class="disk6"  id="disk6" onclick="diskInfo(event)"></div>
+                </div> -->
             </div>
         </div>
         <div class="tower-area" id="tower-area2" onclick="towerAreaTwo()">
@@ -37,7 +52,6 @@
                 
             </div>
         </div>
-        
     </div>
     <h2 style="text-align:center">Move : <span id="move">0</span></h2>
     <h2 style="text-align:center;">Last lowest score : <span id="last-score"></span></h2>

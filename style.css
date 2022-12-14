@@ -1,5 +1,8 @@
+.btns{
+    text-align: center;
+}
 .game{
-    border:1px solid;
+    /* border:1px solid; */
     display: flex;
     padding:10px;
     justify-content: center;
@@ -22,31 +25,56 @@
 }
 
 .disk1{
-    width: 100px;
+    width: 168px;
     height: 20px;
     background: red;
-    margin-left: -40px;
+    margin-left: -73px;
     /* margin-top: 130px; */
     cursor: pointer;
 }
 .disk2{
-    width: 80px;
+    width: 135px;
     height: 20px;
     background: green;
-    margin-left: -30px;
+    margin-left: -56px;
     /* margin-top: -40px; */
     cursor: pointer;
 }
 
 .disk3{
-    width: 60px;
+    width: 110px;
     height: 20px; 
     background: rebeccapurple;
-    margin-left: -20px;
+    margin-left: -44px;
     /* margin-top: -40px; */
     cursor: pointer;
 }
 
+.disk4{
+    width: 88px;
+    height: 20px; 
+    background: #439A97;
+    margin-left: -32px;
+    /* margin-top: -40px; */
+    cursor: pointer;
+}
+
+.disk5{
+    width: 78px;
+    height: 20px; 
+    background: #FFE15D;
+    margin-left: -28px;
+    /* margin-top: -40px; */
+    cursor: pointer;
+}
+.disk6{
+    width: 60px;
+    height: 20px; 
+    background: #FFB9B9;
+    margin-left: -18px;
+    /* margin-top: -40px; */
+    cursor: pointer;
+}
 #result{
     text-align: center;
 }

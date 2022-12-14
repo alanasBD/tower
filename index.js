@@ -1,40 +1,174 @@
+let first = 
+`<div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
+  <div class="tower">
+    <div style="margin-top:130px">  
+        <div class="disk1" id="disk1" onclick="diskInfo(event)"></div>
+    </div>
+    <div  style="margin-top:-40px">
+        <div class="disk2"  id="disk2" onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+         <div class="disk3"  id="disk3" onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+        <div class="disk4"  id="disk4"  onclick="diskInfo(event)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="tower-area" id="tower-area2" onclick="towerAreaTwo()">
+  <div class="tower"></div>
+</div>
+<div class="tower-area" id="tower-area3" onclick="towerAreaThree()">
+  <div class="tower"></div>
+</div>`;
+
+
+let second = 
+`<div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
+  <div class="tower">
+    <div style="margin-top:130px">  
+        <div class="disk1" id="disk1" onclick="diskInfo(event)"></div>
+    </div>
+    <div  style="margin-top:-40px">
+        <div class="disk2"  id="disk2" onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+         <div class="disk3"  id="disk3" onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+        <div class="disk4"  id="disk4"  onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+        <div class="disk5"  id="disk5" onclick="diskInfo(event)"></div>
+    </div>
+  </div>
+</div>
+
+<div class="tower-area" id="tower-area2" onclick="towerAreaTwo()">
+  <div class="tower"></div>
+</div>
+<div class="tower-area" id="tower-area3" onclick="towerAreaThree()">
+  <div class="tower"></div>
+</div>`;
+
+
+let third = 
+`<div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
+  <div class="tower">
+    <div style="margin-top:130px">  
+        <div class="disk1" id="disk1" onclick="diskInfo(event)"></div>
+    </div>
+    <div  style="margin-top:-40px">
+        <div class="disk2"  id="disk2" onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+         <div class="disk3"  id="disk3" onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+        <div class="disk4"  id="disk4"  onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+        <div class="disk5"  id="disk5" onclick="diskInfo(event)"></div>
+    </div>
+    <div style="margin-top:-40px">
+        <div class="disk6"  id="disk6" onclick="diskInfo(event)"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="tower-area" id="tower-area2" onclick="towerAreaTwo()">
+  <div class="tower"></div>
+</div>
+<div class="tower-area" id="tower-area3" onclick="towerAreaThree()">
+  <div class="tower"></div>
+</div>`;
+
+//start from here
+
 let tower = 
 [
   [10,11,12],
   [],
   []
 ];
-
-
+let newTower = [[],[],[]];
 let orginalDisks = ["disk1","disk2","disk3"];
 
+
 let move = 0;
+let disk = 12;
+
+let n =3;
+
+
 
 // disk1 = 10;
 // disk2 = 11;
 // disk3 = 12;
+// disk4 = 13;
+// disk5 = 14;
+// disk6 = 15;
 
-let tower2 = [[],[],[]];
+//select button (4,5,6)
+
+
+const selectButton = (btn)=>{
+  n=btn;
+  for(let i=4;i<=n;i++){
+    orginalDisks.push("disk"+i);
+  }
+  
+  if(btn === 4){
+     tower[0].push(13);
+     document.getElementById("btn5").disabled = true;
+     document.getElementById("btn6").disabled = true;
+     document.getElementById("game").innerHTML = first;
+
+  }
+  else if(btn === 5){
+    tower[0].push(13,14);
+    document.getElementById("btn4").disabled = true;
+    document.getElementById("btn6").disabled = true;
+    document.getElementById("game").innerHTML = second;
+  }
+  else if(btn === 6){
+    tower[0].push(13,14,15)
+    document.getElementById("btn4").disabled = true;
+    document.getElementById("btn5").disabled = true;
+    document.getElementById("game").innerHTML = third;
+  }
+}
+
 
 //replace Number by disk name
 
 const replaceNumber = () =>{
   for(let i=0;i<3;i++){
-    for(let j=0;j<3;j++){
-
+    for(let j=0;j<n;j++){
        if(tower[i][j]===10){
-         tower2[i][j] = "disk1"
+         newTower[i][j] = "disk1"
        }
        else if(tower[i][j] === 11){
-         tower2[i][j] = "disk2"
+         newTower[i][j] = "disk2"
        }
        else if(tower[i][j] === 12){
-         tower2[i][j] = "disk3"
+         newTower[i][j] = "disk3"
+       }
+       else if(tower[i][j] === 13){
+         newTower[i][j] = "disk4"
+       }
+       else if(tower[i][j] === 14){
+         newTower[i][j] = "disk5"
+       }
+       else if(tower[i][j] === 15){
+         newTower[i][j] = "disk6"
        }
        else{
-         tower2[i][j] = ""
+         newTower[i][j] = ""
        }
-
     }
   }
 }
@@ -46,7 +180,7 @@ const playAgain = () =>{
 }
 
 const matchDisks = () =>{
-   let matched = JSON.stringify(orginalDisks)===JSON.stringify(tower2[2]);
+   let matched = JSON.stringify(orginalDisks)===JSON.stringify(newTower[2]);
    if(matched){
 
      const lastScore = Number(localStorage.getItem("last-score"));
@@ -68,7 +202,7 @@ const matchDisks = () =>{
 
 const searchLocation =(val)=>{
   for(let i=0;i<3;i++){
-   for(let j=0;j<3;j++){
+   for(let j=0;j<n;j++){
       if(tower[i][j] === val){
         return [i,j];
      }
@@ -76,13 +210,7 @@ const searchLocation =(val)=>{
   }
 }
 
-
-
-
 // all disks
-let disk = 12;
-
-
 
 function diskInfo (event){
    const diskName = event.target.classList[0];
@@ -95,37 +223,63 @@ function diskInfo (event){
    else if(diskName === "disk3"){
      disk = 12;
    }
-
+   else if(diskName === "disk4"){
+    disk = 13;
+   }
+   else if(diskName === "disk5"){
+    disk = 14;
+   }
+   else if(diskName === "disk6"){
+    disk = 15;
+   }
 }
 
 
+// Tower area 
 
 const  towerArea = () =>{
   let game = document.getElementById("game")
   game.innerHTML =  game.innerHTML = `<div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
   <div class="tower">
       <div style="margin-top:130px">  
-          <div class="${tower2[0][0]}" onclick="diskInfo(event)"></div>
+          <div class="${newTower[0][0]}" onclick="diskInfo(event)"></div>
       </div>
       <div  style="margin-top:-40px">
-          <div class="${tower2[0][1]}"  onclick="diskInfo(event)"></div>
+          <div class="${newTower[0][1]}"  onclick="diskInfo(event)"></div>
       </div>
       <div style="margin-top:-40px">
-           <div class="${tower2[0][2]}" onclick="diskInfo(event)"></div>
+           <div class="${newTower[0][2]}" onclick="diskInfo(event)"></div>
       </div>
-     
+      <div style="margin-top:-40px">
+           <div class="${newTower[0][3]}"  id="disk4"  onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+          <div class="${newTower[0][4]}"  id="disk5" onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+         <div class="${newTower[0][5]}"  id="disk6" onclick="diskInfo(event)"></div>
+      </div>
   </div>
 </div>
 <div class="tower-area" id="tower-area2" onclick="towerAreaTwo()">
   <div class="tower">
       <div style="margin-top:130px">  
-          <div class="${tower2[1][0]}" onclick="diskInfo(event)"></div>
+          <div class="${newTower[1][0]}" onclick="diskInfo(event)"></div>
       </div>
       <div  style="margin-top:-40px">
-          <div class="${tower2[1][1]}"  onclick="diskInfo(event)"></div>
+          <div class="${newTower[1][1]}"  onclick="diskInfo(event)"></div>
       </div>
       <div style="margin-top:-40px">
-           <div class="${tower2[1][2]}" onclick="diskInfo(event)"></div>
+           <div class="${newTower[1][2]}" onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+         <div class="${newTower[1][3]}"  id="disk4"  onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+        <div class="${newTower[1][4]}"  id="disk5" onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+       <div class="${newTower[1][5]}"  id="disk6" onclick="diskInfo(event)"></div>
       </div>
      
   </div>
@@ -133,32 +287,37 @@ const  towerArea = () =>{
 <div class="tower-area" id="tower-area3" onclick="towerAreaThree()">
   <div class="tower">
       <div style="margin-top:130px">  
-          <div class="${tower2[2][0]}" onclick="diskInfo(event)"></div>
+          <div class="${newTower[2][0]}" onclick="diskInfo(event)"></div>
       </div>
       <div  style="margin-top:-40px">
-          <div class="${tower2[2][1]}"  onclick="diskInfo(event)"></div>
+          <div class="${newTower[2][1]}"  onclick="diskInfo(event)"></div>
       </div>
       <div style="margin-top:-40px">
-           <div class="${tower2[2][2]}" onclick="diskInfo(event)"></div>
+           <div class="${newTower[2][2]}" onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+         <div class="${newTower[2][3]}"  id="disk4"  onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+         <div class="${newTower[2][4]}"  id="disk5" onclick="diskInfo(event)"></div>
+      </div>
+      <div style="margin-top:-40px">
+         <div class="${newTower[2][5]}"  id="disk6" onclick="diskInfo(event)"></div>
       </div>
      
   </div>
 </div>`
-
 }
 
-
-// areas of tower
-
-
+//Show move count
 const showMove = () =>{
   document.getElementById("move").innerText = move;
 }
 
+//First Tower
+
 const towerAreaOne = () =>{
    const [area,index] = searchLocation(disk);
-  
-   
   
    const len = tower[area].length;
    const isLastElement = tower[area][len-1] === disk ? true : false ;
@@ -177,18 +336,14 @@ const towerAreaOne = () =>{
     move++;
     showMove();
   }
-
-  
-
-
-   replaceNumber();
-   towerArea()
+  replaceNumber();
+  towerArea()
 }
+
+//Second Tower
 
 const towerAreaTwo = () =>{
    const [area,index] = searchLocation(disk);
-
-
 
    const len = tower[area].length;
    const isLastElement = tower[area][len-1] === disk ? true : false ;
@@ -207,22 +362,19 @@ const towerAreaTwo = () =>{
      move++;
      showMove();
    }
-   
-   
-  
-
    replaceNumber();
-   towerArea()
-
+   towerArea();
 }
 
+
+
+
+//Third Tower
 
 
 const towerAreaThree = () =>{
   const [area,index] = searchLocation(disk);
   
-
-
   const len = tower[area].length;
   const isLastElement = tower[area][len-1] === disk ? true : false ;
 
@@ -241,18 +393,10 @@ const towerAreaThree = () =>{
     tower[2].push(disk);
     move++;
     showMove();
-
-   
-   
   }
-
-  replaceNumber();
-  towerArea()
-  matchDisks();
- 
+   replaceNumber();
+   towerArea()
+   matchDisks();
 }
-
-
-
 document.getElementById("last-score").innerText = localStorage.getItem("last-score");
 
