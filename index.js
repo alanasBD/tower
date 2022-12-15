@@ -140,6 +140,18 @@ const selectButton = (btn)=>{
     document.getElementById("btn5").disabled = true;
     document.getElementById("game").innerHTML = third;
   }
+
+  if(n===4){
+    document.getElementById("score").innerText = localStorage.getItem("scoreForFour");
+  }
+  else if(n===5){
+    document.getElementById("score").innerText = localStorage.getItem("scoreForFive");
+  }
+  else if(n===6){
+    document.getElementById("score").innerText = localStorage.getItem("scoreForSix");
+  }
+
+
 }
 
 
@@ -181,13 +193,35 @@ const playAgain = () =>{
 
 const matchDisks = () =>{
    let matched = JSON.stringify(orginalDisks)===JSON.stringify(newTower[2]);
+   let lastScore;
    if(matched){
+     if(n===4){
+        lastScore = Number(localStorage.getItem("scoreForFour"));
+        if(move<lastScore){
+          localStorage.setItem("scoreForFour",move);
+        }
+      }
+      else if(n===5){
+        lastScore = Number(localStorage.getItem("scoreForFive"));
+        if(move<lastScore){
+          localStorage.setItem("scoreForFive",move);
+        }
+      }
+      else if(n===6){
+        lastScore = Number(localStorage.getItem("scoreForSix"));
+        if(move<lastScore){
+          localStorage.setItem("scoreForSix",move);
+        }
+      }
+      else if(n===3){
+        lastScore = Number(localStorage.getItem("scoreForThree"));
+        if(move<lastScore){
+          localStorage.setItem("scoreForThree",move);
+        }
+      }
+   
 
-     const lastScore = Number(localStorage.getItem("last-score"));
-     if(move < lastScore){
-       localStorage.setItem("last-score",move);
-       document.getElementById("last-score").innerText = move;
-     }
+     document.getElementById("score").innerText = move;
 
      document.getElementById("game").innerHTML = 
      `<div id="result">
@@ -398,5 +432,9 @@ const towerAreaThree = () =>{
    towerArea()
    matchDisks();
 }
-document.getElementById("last-score").innerText = localStorage.getItem("last-score");
+
+
+document.getElementById("score").innerText = localStorage.getItem("scoreForThree");
+
+
 

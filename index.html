@@ -18,9 +18,23 @@
         <button onclick="selectButton(5)" id="btn5">Disk 5</button>
         <button onclick="selectButton(6)" id="btn6">Disk 6</button>
     </div>
+    
+    <!-- <div style="display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    width: 942px;
+    margin: 0 auto;
+    border: 1px solid;">
+        <div class="a">A</div>
+        <div class="b">B</div>
+        <div class="c">C</div>
+    </div>
+ -->
+
 
     <div class="game" id="game">
-        <div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
+       
+       <div class="tower-area" id="tower-area1" onclick="towerAreaOne()">
             <div class="tower">
                 <div style="margin-top:130px">  
                     <div class="disk1" onclick="diskInfo(event)"></div>
@@ -54,7 +68,7 @@
         </div>
     </div>
     <h2 style="text-align:center">Move : <span id="move">0</span></h2>
-    <h2 style="text-align:center;">Last lowest score : <span id="last-score"></span></h2>
+    <h2 style="text-align:center;">Last lowest score : <span id="score"></span></h2>
 
 
   
